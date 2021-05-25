@@ -53,12 +53,10 @@ class MainActivity : AppCompatActivity() {
     private fun showAlertDialogAdd() {
         val alert = AlertDialog.Builder(this)
         val editText = EditText(applicationContext)
-
         editText.hint = "Masukkan catatanmu disini"
 
         alert.setTitle("Catatan Baru")
         alert.setView(editText)
-
         alert.setPositiveButton("Simpan") { dialog, _ ->
             noteViewModel.insertNote(
                 Note(note = editText.text.toString())
@@ -68,17 +66,13 @@ class MainActivity : AppCompatActivity() {
         alert.setNegativeButton("Batal") { dialog, _ ->
             dialog.dismiss()
         }
-
         alert.show()
     }
 
     private fun showAlertMenu(note: Note) {
         val items = arrayOf("Edit", "Hapus")
-
-        val builder =
-            AlertDialog.Builder(this)
+        val builder = AlertDialog.Builder(this)
         builder.setItems(items) { dialog, which ->
-
             when (which) {
                 0 -> {
                     showAlertDialogEdit(note)

@@ -5,9 +5,11 @@ import androidx.room.Database
 import androidx.room.Room
 import com.sabbie.learnroomdb.db.note.Note
 import com.sabbie.learnroomdb.db.note.NoteDao
+import androidx.room.RoomDatabase
+
 
 @Database(entities = [Note::class], exportSchema = false, version = 1)
-class AppDatabase {
+abstract class AppDatabase : RoomDatabase() {
     abstract fun noteDao() : NoteDao
 
     companion object {
