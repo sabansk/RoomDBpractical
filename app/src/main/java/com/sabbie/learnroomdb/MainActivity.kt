@@ -17,8 +17,8 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var noteViewModel = NoteViewModel
-    private lateinit var noteAdapter = NoteAdapter
+    private lateinit var noteViewModel : NoteViewModel
+    private lateinit var noteAdapter :  NoteAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,24 +32,24 @@ class MainActivity : AppCompatActivity() {
         noteRV.adapter = noteAdapter
 
         noteViewModel = ViewModelProvider(this).get(NoteViewModel::class.java)
-        noteViewModel.getNotes()?.observe(this, Observer {
+        val observe = noteViewModel.getNotes()?.observe(this, Observer {
             noteAdapter.setNotes(it)
         })
-
-        override fun onCreateOptionsMenu(menu: Menu?) : Boolean {
-            val inflater =  menuInflater
-            inflater.inflate(R.menu.main_menu, menu)
-            return super.onCreateOptionsMenu(menu)
-        }
-
-        override fun onOptionsItemSelected(item: MenuItem): Boolean {
-            when (item.itemId) {
-             R.id.addMenu -> showAlertDialogAdd()
-            }
-            return super.onOptionsItemSelected(item)
-        }
     }
 
+    override fun onCreateOptionsMenu(menu: Menu?) : Boolean {
+        val inflater =  menuInflater
+        inflater.inflate(R.menu.main_menu, menu)
+        return super.onCreateOptionsMenu(menu)
+
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.addMenu -> showAlertDialogAdd()
+        }
+        return super.onOptionsItemSelected(item)
+    }
     private fun showAlertDialogAdd() {
         val alert = AlertDialog.Builder(this)
         val editText = EditText(applicationContext)

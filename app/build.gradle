@@ -56,7 +56,7 @@ dependencies {
     implementation "androidx.recyclerview:recyclerview:1.2.0"
 
     // couroutine implement
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.2"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.4.1"
 
     // room implement
     implementation "androidx.room:room-runtime:2.2.5"
